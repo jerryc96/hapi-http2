@@ -14,6 +14,8 @@ const saltRounds = 10;
 
 // read certificate and private key
 const serverOptions = {
+  key: fs.readFileSync('localhost-privkey.pem'),
+  cert: fs.readFileSync('localhost-cert.pem'),
   allowHTTP1: true
 };
 
@@ -23,7 +25,7 @@ const listener = Http2.createSecureServer(serverOptions);
 // setup mongoose conn with mlab
 const mongoConnector = process.env.MONGOLAB_URI || "mongodb://127.0.0.1:27017/hapi";
 const port = process.env.PORT || 8000;
-const hostname = process.env.HOST || "localhost";
+const hostname = process.env.HOST || "localhost"
 
 
 const init = async() => {
@@ -38,7 +40,7 @@ const init = async() => {
   const UserModel = mongoose.model('User', UserSchema);
 
   const server = new Hapi.Server({
-    "host": hostname, 
+    "host": "localhost", 
     "port": port,
     "listener": listener,
     "routes": {
