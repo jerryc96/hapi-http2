@@ -14,8 +14,6 @@ const saltRounds = 10;
 
 // read certificate and private key
 const serverOptions = {
-  key: fs.readFileSync('localhost-privkey.pem'),
-  cert: fs.readFileSync('localhost-cert.pem'),
   allowHTTP1: true
 };
 
