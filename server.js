@@ -23,6 +23,7 @@ const listener = Http2.createSecureServer(serverOptions);
 // setup mongoose conn with mlab
 const mongoConnector = process.env.MONGOLAB_URI || "mongodb://127.0.0.1:27017/hapi";
 const port = process.env.PORT || 8000;
+const hostname = process.env.HOST || "localhost";
 
 
 const init = async() => {
@@ -37,7 +38,7 @@ const init = async() => {
   const UserModel = mongoose.model('User', UserSchema);
 
   const server = new Hapi.Server({
-    "host": "localhost", 
+    "host": hostname, 
     "port": port,
     "listener": listener,
     "routes": {
