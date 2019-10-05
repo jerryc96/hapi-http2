@@ -14,8 +14,6 @@ const saltRounds = 10;
 
 // read certificate and private key
 const serverOptions = {
-  key: fs.readFileSync('localhost-privkey.pem'),
-  cert: fs.readFileSync('localhost-cert.pem'),
   allowHTTP1: true
 };
 
@@ -40,7 +38,7 @@ const init = async() => {
   const UserModel = mongoose.model('User', UserSchema);
 
   const server = new Hapi.Server({
-    "host": "localhost", 
+    "host": hostname, 
     "port": port,
     "listener": listener,
     "routes": {
