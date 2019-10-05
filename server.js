@@ -18,13 +18,14 @@ const serverOptions = {
 };
 
 // create http2 secure server listener
-const listener = Http2.createSecureServer(serverOptions);
+
 
 // setup mongoose conn with mlab
 const mongoConnector = process.env.MONGOLAB_URI || "mongodb://127.0.0.1:27017/hapi";
 const port = process.env.PORT || 8000;
 const hostname = process.env.HOST || "localhost"
 
+const listener = Http2.createSecureServer(serverOptions);
 
 const init = async() => {
 
